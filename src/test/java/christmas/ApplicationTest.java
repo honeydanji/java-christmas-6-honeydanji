@@ -2,6 +2,7 @@ package christmas;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,22 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() -> {
             runException("a");
             assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        });
+    }
+
+    @Test
+    void 날짜_예외_테스트_범위_벗어난_경우() {
+        assertSimpleTest(() -> {
+            runException("32");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        });
+    }
+
+    @Test
+    void 날짜_예외_발생시_재입력_테스트() {
+        assertSimpleTest(() -> {
+            run("a", "31");
+            assertThatNoException();
         });
     }
 
