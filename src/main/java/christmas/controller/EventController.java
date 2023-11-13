@@ -8,6 +8,7 @@ public class EventController {
 
     // 이벤트 시작
     public void startBooking() {
-        inputView.inputDate();
+        inputView.inputDate(); // 날짜 입력
+        inputView.inputFoodAndAmount(); // 메뉴 입력
     }
 }
