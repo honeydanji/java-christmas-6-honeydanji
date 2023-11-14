@@ -1,7 +1,6 @@
 package christmas.view;
 
 import java.util.HashMap;
-import java.util.List;
 
 import static christmas.utils.OutputMessage.*;
 
@@ -33,7 +32,7 @@ public class OutputView {
     }
 
     public void outputBenefitDetail() {
-        System.out.print(BENEFIT_DETAIL.getMessage());
+        System.out.println(BENEFIT_DETAIL.getMessage());
     }
 
     public void outputChristmasDiscount(int discount) {
@@ -60,6 +59,14 @@ public class OutputView {
         if (discount >= 1) {
             System.out.println(String.format(GIVEAWAY_DISCOUNT.getMessage(),discount));
         }
+    }
+
+    public void outputTotalBenefit(int totalBenefit) {
+        if (totalBenefit == 0) {
+            System.out.println(String.format(TOTAL_BENEFIT.getMessage(),"",totalBenefit));
+            return;
+        }
+        System.out.println(String.format(TOTAL_BENEFIT.getMessage(),"-",totalBenefit));
     }
 
     public void outputNotThing() {

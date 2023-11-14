@@ -9,13 +9,13 @@ public enum OutputMessage {
     GIFT_MENU("<증정 메뉴>"),
     GIFT("샴페인 1개\n"),
     NOT_THING("없음\n"),
-    BENEFIT_DETAIL("<혜택 내역>\n"),
+    BENEFIT_DETAIL("<혜택 내역>"),
     CHRISTMAS_DISCOUNT("크리스마스 디데이 할인: -%,d원"),
     WEEKDAY_DISCOUNT("평일 할인: -%,d원"),
     WEEKEND_DISCOUNT("주말 할인: -%,d원"),
     SPECIAL_DISCOUNT("특별 할인: -%,d원"),
     GIVEAWAY_DISCOUNT("증정 이벤트: -%,d원"),
-    TOTAL_BENEFIT("<총혜택 금액>\n" + "-%,d원"),
+    TOTAL_BENEFIT("\n<총혜택 금액>\n" + "%s%,d원"),
     DISCOUNT_PAYMENT("<할인 후 예상 결재 금액>\n" + "%,d원"),
     EVENT_BADGE("<12월 이벤트 배지>\n" + "%s");
 
