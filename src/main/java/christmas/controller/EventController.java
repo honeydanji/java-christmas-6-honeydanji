@@ -64,8 +64,6 @@ public class EventController {
         outputView.outputSpecialDiscount(eventBenefit.getAllBenefitDetail().get(3));
         outputView.outputGiveawayDiscount(eventBenefit.getAllBenefitDetail().get(4));
     }
-
-    // 총 혜택 금액
     private void totalBenefit() {
         int totalBenefit = 0;
         for (int benefit : eventBenefit.getAllBenefitDetail()) {
