@@ -18,7 +18,7 @@ public class EventBenefitTest {
 
         eventBenefit = new EventBenefit(reservationDateTest, foodAndAmountTest, totalPaymentTest);
 
-        assertEquals(true,eventBenefit.gift());
+        assertEquals(25000,eventBenefit.gift());
     }
 
     @Test
@@ -29,7 +29,7 @@ public class EventBenefitTest {
 
         eventBenefit = new EventBenefit(reservationDateTest, foodAndAmountTest, totalPaymentTest);
 
-        assertEquals(false,eventBenefit.gift());
+        assertEquals(0,eventBenefit.gift());
     }
 
     @Test
