@@ -18,7 +18,7 @@ public class OutputView {
         }
     }
 
-    public void outputNotDiscountPayment() {
-        // 구현
+    public void outputNotDiscountPayment(int total) {
+        System.out.println(String.format(NOT_DISCOUNT_PAYMENT.getMessage(), total));
     }
 }
