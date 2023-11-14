@@ -3,12 +3,21 @@ package christmas.model;
 import java.util.HashMap;
 
 public class TotalPaymentResult {
+    private int totalPayment;
 
-    public int getTotalPayment(HashMap<String, Integer> foodAndAmount) {
+    public TotalPaymentResult(HashMap<String, Integer> foodAndAmount) {
+        setTotalPayment(foodAndAmount);
+    }
+
+    public int getTotalPayment() {
+        return totalPayment;
+    }
+
+    private void setTotalPayment(HashMap<String, Integer> foodAndAmount) {
         int total = 0;
         for(String food : foodAndAmount.keySet()) {
             total += CalculateTotalPayment.valueOf(food).price(foodAndAmount.get(food));
         }
-        return total;
+        this.totalPayment = total;
     }
 }

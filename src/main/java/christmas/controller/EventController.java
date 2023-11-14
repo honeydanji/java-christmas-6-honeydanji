@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.model.EventBenefit;
 import christmas.model.ReservationInformation;
 import christmas.model.TotalPaymentResult;
 import christmas.view.InputView;
@@ -12,6 +13,8 @@ public class EventController {
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
     private ReservationInformation reservationInformation = new ReservationInformation();
+    private TotalPaymentResult totalPaymentResult = new TotalPaymentResult(reservationInformation.getFoodAndAmount());
+    private EventBenefit eventBenefit = new EventBenefit(reservationInformation.getReservationDate(), reservationInformation.getFoodAndAmount());
 
     public EventController() {
         startBooking();
@@ -26,10 +29,12 @@ public class EventController {
     }
 
     private void beforeBenefits() {
-        TotalPaymentResult totalPaymentResult = new TotalPaymentResult();
-
         outputView.outputMenu(reservationInformation.getFoodAndAmount());
-        int total = totalPaymentResult.getTotalPayment(reservationInformation.getFoodAndAmount());
-        outputView.outputNotDiscountPayment(total);
+        int totalPayment = totalPaymentResult.getTotalPayment();
+        outputView.outputNotDiscountPayment(totalPayment);
+    }
+
+    private void giftForPurchaseAmount() {
+
     }
 }
