@@ -21,4 +21,12 @@ public class OutputView {
     public void outputNotDiscountPayment(int total) {
         System.out.println(String.format(NOT_DISCOUNT_PAYMENT.getMessage(), total));
     }
+
+    public void outputGift(boolean gift) {
+        if(gift) {
+            System.out.println(GIFT_MENU.getMessage());
+            return;
+        }
+        System.out.println(NOT_THING.getMessage());
+    }
 }

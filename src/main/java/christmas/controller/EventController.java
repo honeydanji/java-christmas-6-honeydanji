@@ -14,11 +14,13 @@ public class EventController {
     private OutputView outputView = new OutputView();
     private ReservationInformation reservationInformation = new ReservationInformation();
     private TotalPaymentResult totalPaymentResult = new TotalPaymentResult(reservationInformation.getFoodAndAmount());
-    private EventBenefit eventBenefit = new EventBenefit(reservationInformation.getReservationDate(), reservationInformation.getFoodAndAmount());
-
+    private EventBenefit eventBenefit = new EventBenefit(reservationInformation.getReservationDate(),
+                                                            reservationInformation.getFoodAndAmount(),
+                                                            totalPaymentResult.getTotalPayment());
     public EventController() {
         startBooking();
         beforeBenefits();
+        giftForPurchaseAmount();
     }
 
     private void startBooking() {
@@ -35,6 +37,7 @@ public class EventController {
     }
 
     private void giftForPurchaseAmount() {
-
+        boolean gift = eventBenefit.gift();
+        outputView.outputGift(gift);
     }
 }

@@ -6,7 +6,8 @@ public enum OutputMessage {
     ORDER_MENU("<주문 메뉴>\n"),
     MENU("%s %d개"),
     NOT_DISCOUNT_PAYMENT("\n<할인 전 총주문 금액>\n" + "%,d원"),
-    GIFT_MENU("<증정 메뉴>\n" + "샴페인 %d"),
+    GIFT_MENU("<증정 메뉴>\n" + "샴페인 1개"),
+    NOT_THING("없음"),
     BENEFIT_DETAIL("<혜택 내역>\n"
                     + "크리스마스 디데이 할인: -%d원\n"
                     + "평일 할인: -%d원\n"
