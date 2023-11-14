@@ -6,6 +6,9 @@ public class TotalPaymentResult {
     private int totalPayment;
 
     public TotalPaymentResult(HashMap<String, Integer> foodAndAmount) {
+        if (foodAndAmount == null) {
+            return;
+        }
         setTotalPayment(foodAndAmount);
     }
 
