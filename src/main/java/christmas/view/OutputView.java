@@ -24,8 +24,9 @@ public class OutputView {
     }
 
     public void outputGift(int gift) {
+        System.out.println(GIFT_MENU.getMessage());
         if(gift == 25000) {
-            System.out.println(GIFT_MENU.getMessage());
+            System.out.println(GIFT.getMessage());
             return;
         }
         System.out.println(NOT_THING.getMessage());
@@ -38,31 +39,30 @@ public class OutputView {
     public void outputChristmasDiscount(int discount) {
         if (discount >= 1) {
             System.out.println(String.format(CHRISTMAS_DISCOUNT.getMessage(),discount));
-            return;
         }
     }
     public void outputWeekdayDiscount(int discount) {
         if (discount >= 1) {
             System.out.println(String.format(WEEKDAY_DISCOUNT.getMessage(),discount));
-            return;
         }
     }
     public void outputWeekendDiscount(int discount) {
         if (discount >= 1) {
             System.out.println(String.format(WEEKEND_DISCOUNT.getMessage(),discount));
-            return;
         }
     }
     public void outputSpecialDiscount(int discount) {
         if (discount >= 1) {
             System.out.println(String.format(SPECIAL_DISCOUNT.getMessage(),discount));
-            return;
         }
     }
     public void outputGiveawayDiscount(int discount) {
         if (discount >= 1) {
             System.out.println(String.format(GIVEAWAY_DISCOUNT.getMessage(),discount));
-            return;
         }
+    }
+
+    public void outputNotThing() {
+        System.out.println(NOT_THING.getMessage());
     }
 }
