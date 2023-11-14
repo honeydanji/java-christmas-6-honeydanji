@@ -132,4 +132,28 @@ public class EventBenefitTest {
 
         assertEquals(0,eventBenefit.weekendDiscount());
     }
+
+    @Test
+    void 스페셜_데이_o_할인_테스트() {
+        int reservationDateTest = 3;
+        HashMap<String, Integer> foodAndAmountTest = new HashMap<>();
+        int totalPaymentTest = 0;
+
+        eventBenefit = new EventBenefit(reservationDateTest, foodAndAmountTest, totalPaymentTest);
+
+        assertEquals(1000,eventBenefit.specialDayDiscount());
+    }
+
+    @Test
+    void 스페셜_데이_x_할인_테스트() {
+        int reservationDateTest = 1;
+        HashMap<String, Integer> foodAndAmountTest = new HashMap<>();
+        foodAndAmountTest.put("초코케이크",3);
+        foodAndAmountTest.put("제로콜라",5);
+        int totalPaymentTest = 0;
+
+        eventBenefit = new EventBenefit(reservationDateTest, foodAndAmountTest, totalPaymentTest);
+
+        assertEquals(0,eventBenefit.specialDayDiscount());
+    }
 }

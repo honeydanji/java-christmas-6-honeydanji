@@ -42,7 +42,6 @@ public class EventBenefit {
         return discount;
     }
 
-    // 주말 할인
     public int weekendDiscount() {
         int discount = 0;
         int mainDishCount = 0;
@@ -53,6 +52,13 @@ public class EventBenefit {
         }
         discount = 2023 * mainDishCount;
         return discount;
+    }
+
+    public int specialDayDiscount() {
+        if (specialDay().contains(reservationDate)) {
+            return 1000;
+        }
+        return 0;
     }
 
     private List<Integer> christmasPeriod() {
@@ -67,6 +73,11 @@ public class EventBenefit {
     private List<Integer> weekend() {
         List<Integer> weekend = List.of(1,2,8,9,15,16,22,23,29,30);
         return weekend;
+    }
+
+    private List<Integer> specialDay() {
+        List<Integer> specialDay = List.of(3,10,17,24,25,31);
+        return specialDay;
     }
 
     private List<String> desert() {
