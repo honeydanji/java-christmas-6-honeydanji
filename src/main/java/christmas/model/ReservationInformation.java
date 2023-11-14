@@ -10,4 +10,8 @@ public class ReservationInformation {
         this.reservationDate = reservationDate;
         this.foodAndAmount = foodAndAmount;
     }
+
+    public int getReservationDate() {
+        return reservationDate;
+    }
 }
