@@ -12,7 +12,11 @@ public class EventController {
     private OutputView outputView = new OutputView();
     private ReservationInformation reservationInformation = new ReservationInformation();
 
-    public void startBooking() {
+    public EventController() {
+        startBooking();
+    }
+
+    private void startBooking() {
         int reservationDate = inputView.inputDate();
         HashMap<String, Integer> foodAndAmount = inputView.inputFoodAndAmount();
         reservationInformation.setReservationInformation(reservationDate, foodAndAmount);
