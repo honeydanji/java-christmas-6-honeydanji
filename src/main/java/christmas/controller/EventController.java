@@ -14,6 +14,7 @@ public class EventController {
 
     public EventController() {
         startBooking();
+        beforeBenefits();
     }
 
     private void startBooking() {
@@ -21,5 +22,10 @@ public class EventController {
         HashMap<String, Integer> foodAndAmount = inputView.inputFoodAndAmount();
         reservationInformation.setReservationInformation(reservationDate, foodAndAmount);
         outputView.outputPreview(reservationInformation.getReservationDate());
+    }
+
+    private void beforeBenefits() {
+        outputView.outputMenu(reservationInformation.getFoodAndAmount());
+        outputView.outputNotDiscountPayment();
     }
 }

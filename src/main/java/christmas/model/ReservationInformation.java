@@ -14,4 +14,8 @@ public class ReservationInformation {
     public int getReservationDate() {
         return reservationDate;
     }
+
+    public HashMap<String,Integer> getFoodAndAmount() {
+        return foodAndAmount;
+    }
 }
