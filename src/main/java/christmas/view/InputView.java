@@ -30,7 +30,7 @@ public class InputView {
     }
 
     public HashMap<String, Integer> inputFoodAndAmount() {
-        System.out.println(INPUT_MENU);
+        System.out.println(INPUT_MENU.getMessage());
         while (true) {
             try {
                 String input = Console.readLine();
