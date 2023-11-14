@@ -7,6 +7,7 @@ import christmas.view.InputView;
 import christmas.view.OutputView;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class EventController {
 
@@ -52,6 +53,10 @@ public class EventController {
 
     private void allEventBenefit() {
         outputView.outputBenefitDetail();
+        if (eventBenefit.getAllBenefitDetail().equals(List.of(0,0,0,0,0))) {
+            outputView.outputNotThing();
+            return;
+        }
         outputView.outputChristmasDiscount(eventBenefit.getAllBenefitDetail().get(0));
         outputView.outputWeekdayDiscount(eventBenefit.getAllBenefitDetail().get(1));
         outputView.outputWeekendDiscount(eventBenefit.getAllBenefitDetail().get(2));

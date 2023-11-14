@@ -26,6 +26,9 @@ public class EventBenefit {
         allBenefitDetail.add(2,weekendDiscount());
         allBenefitDetail.add(3,specialDayDiscount());
         allBenefitDetail.add(4,gift());
+        if(totalPayment < 10000) {
+            allBenefitDetail = new ArrayList<>(Arrays.asList(0,0,0,0,0));
+        }
         return allBenefitDetail;
     }
 
