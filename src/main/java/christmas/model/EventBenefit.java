@@ -1,12 +1,13 @@
 package christmas.model;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class EventBenefit {
+
     private int reservationDate;
     private HashMap<String, Integer> foodAndAmount;
     private int totalPayment;
+    private final DecemberEventData decemberEventData = new DecemberEventData();
 
     public EventBenefit(int reservationDate, HashMap<String, Integer> foodAndAmount, int totalPayment) {
         this.reservationDate = reservationDate;
@@ -23,7 +24,7 @@ public class EventBenefit {
 
     public int christmasDiscount() {
         int discount = 0;
-        if (christmasPeriod().contains(reservationDate)) {
+        if (decemberEventData.christmasPeriod().contains(reservationDate)) {
             discount = 1000 + 100 * (reservationDate - 1);
             return discount;
         }
@@ -34,7 +35,7 @@ public class EventBenefit {
         int discount = 0;
         int desertCount = 0;
         for(String food : foodAndAmount.keySet()) {
-            if (weekday().contains(reservationDate) && desert().contains(food)) {
+            if (decemberEventData.weekday().contains(reservationDate) && decemberEventData.desert().contains(food)) {
                 desertCount += foodAndAmount.get(food);
             }
         }
@@ -46,7 +47,7 @@ public class EventBenefit {
         int discount = 0;
         int mainDishCount = 0;
         for(String food : foodAndAmount.keySet()) {
-            if (weekend().contains(reservationDate) && mainDish().contains(food)) {
+            if (decemberEventData.weekend().contains(reservationDate) && decemberEventData.mainDish().contains(food)) {
                 mainDishCount += foodAndAmount.get(food);
             }
         }
@@ -55,38 +56,9 @@ public class EventBenefit {
     }
 
     public int specialDayDiscount() {
-        if (specialDay().contains(reservationDate)) {
+        if (decemberEventData.specialDay().contains(reservationDate)) {
             return 1000;
         }
         return 0;
-    }
-
-    private List<Integer> christmasPeriod() {
-        List<Integer> christmasPeriod = List.of(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25);
-        return christmasPeriod;
-    }
-
-    private List<Integer> weekday() {
-        List<Integer> weekday = List.of(3,4,5,6,7,10,11,12,13,14,17,18,19,20,21,24,25,26,27,28,31);
-        return weekday;
-    }
-    private List<Integer> weekend() {
-        List<Integer> weekend = List.of(1,2,8,9,15,16,22,23,29,30);
-        return weekend;
-    }
-
-    private List<Integer> specialDay() {
-        List<Integer> specialDay = List.of(3,10,17,24,25,31);
-        return specialDay;
-    }
-
-    private List<String> desert() {
-        List<String> desert = List.of("초코케이크", "아이스크림");
-        return desert;
-    }
-
-    private List<String> mainDish() {
-        List<String> mainDish = List.of("티본스테이크","바비큐립","해산물파스타","크리스마스파스타");
-        return mainDish;
     }
 }
