@@ -1,6 +1,9 @@
 package christmas.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class EventBenefit {
 
@@ -8,6 +11,7 @@ public class EventBenefit {
     private HashMap<String, Integer> foodAndAmount;
     private int totalPayment;
     private final DecemberEventData decemberEventData = new DecemberEventData();
+    private List<Integer> allBenefitDetail;
 
     public EventBenefit(int reservationDate, HashMap<String, Integer> foodAndAmount, int totalPayment) {
         this.reservationDate = reservationDate;
@@ -15,11 +19,14 @@ public class EventBenefit {
         this.totalPayment = totalPayment;
     }
 
-    public boolean gift() {
-        if (totalPayment >= 120000) {
-            return true;
-        }
-        return false;
+    public List<Integer> getAllBenefitDetail() {
+        allBenefitDetail = new ArrayList<>(Arrays.asList(0,0,0,0,0));
+        allBenefitDetail.add(0,christmasDiscount());
+        allBenefitDetail.add(1,weekdayDiscount());
+        allBenefitDetail.add(2,weekendDiscount());
+        allBenefitDetail.add(3,specialDayDiscount());
+        allBenefitDetail.add(4,gift());
+        return allBenefitDetail;
     }
 
     public int christmasDiscount() {
@@ -58,6 +65,13 @@ public class EventBenefit {
     public int specialDayDiscount() {
         if (decemberEventData.specialDay().contains(reservationDate)) {
             return 1000;
+        }
+        return 0;
+    }
+
+    public int gift() {
+        if (totalPayment >= 120000) {
+            return 25000;
         }
         return 0;
     }

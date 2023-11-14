@@ -51,5 +51,11 @@ public class EventController {
     }
 
     private void allEventBenefit() {
+        outputView.outputBenefitDetail();
+        outputView.outputChristmasDiscount(eventBenefit.getAllBenefitDetail().get(0));
+        outputView.outputWeekdayDiscount(eventBenefit.getAllBenefitDetail().get(1));
+        outputView.outputWeekendDiscount(eventBenefit.getAllBenefitDetail().get(2));
+        outputView.outputSpecialDiscount(eventBenefit.getAllBenefitDetail().get(3));
+        outputView.outputGiveawayDiscount(eventBenefit.getAllBenefitDetail().get(4));
     }
 }
