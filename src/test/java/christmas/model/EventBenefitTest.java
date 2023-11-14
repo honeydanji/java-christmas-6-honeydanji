@@ -92,4 +92,44 @@ public class EventBenefitTest {
 
         assertEquals(0,eventBenefit.weekdayDiscount());
     }
+
+    @Test
+    void 메인_메뉴_구입_O_주말_O_할인_테스트() {
+        int reservationDateTest = 1;
+        HashMap<String, Integer> foodAndAmountTest = new HashMap<>();
+        foodAndAmountTest.put("티본스테이크",2);
+        foodAndAmountTest.put("초코케이크",3);
+        foodAndAmountTest.put("제로콜라",5);
+        int totalPaymentTest = 0;
+
+        eventBenefit = new EventBenefit(reservationDateTest, foodAndAmountTest, totalPaymentTest);
+
+        assertEquals(2023*2,eventBenefit.weekendDiscount());
+    }
+
+    @Test
+    void 메인_메뉴_구입_O_주말_X_할인_테스트() {
+        int reservationDateTest = 27;
+        HashMap<String, Integer> foodAndAmountTest = new HashMap<>();
+        foodAndAmountTest.put("티본스테이크",2);
+        foodAndAmountTest.put("제로콜라",5);
+        int totalPaymentTest = 0;
+
+        eventBenefit = new EventBenefit(reservationDateTest, foodAndAmountTest, totalPaymentTest);
+
+        assertEquals(0,eventBenefit.weekendDiscount());
+    }
+
+    @Test
+    void 메인_메뉴_구입_X_주말_O_할인_테스트() {
+        int reservationDateTest = 1;
+        HashMap<String, Integer> foodAndAmountTest = new HashMap<>();
+        foodAndAmountTest.put("초코케이크",3);
+        foodAndAmountTest.put("제로콜라",5);
+        int totalPaymentTest = 0;
+
+        eventBenefit = new EventBenefit(reservationDateTest, foodAndAmountTest, totalPaymentTest);
+
+        assertEquals(0,eventBenefit.weekendDiscount());
+    }
 }
