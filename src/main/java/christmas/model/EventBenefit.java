@@ -19,6 +19,14 @@ public class EventBenefit {
         this.totalPayment = totalPayment;
     }
 
+    public int totalBenefit() {
+        int totalBenefit = 0;
+        for (int benefit : allBenefitDetail) {
+            totalBenefit += benefit;
+        }
+        return totalBenefit;
+    }
+
     public List<Integer> getAllBenefitDetail() {
         allBenefitDetail = new ArrayList<>(Arrays.asList(0,0,0,0,0));
         allBenefitDetail.add(0,christmasDiscount());
