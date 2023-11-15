@@ -12,22 +12,22 @@ import java.util.List;
 
 public class EventController {
 
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
     private ReservationInformation reservationInformation;
     private TotalPaymentResult totalPaymentResult;
     private EventBenefit eventBenefit;
     private BadgeByBenefit badgeByBenefit;
 
     public EventController() {
-        startBooking();             // 예약시작
-        beforeBenefits();           // 혜택 적용전 금액
-        createInstance();           // 함수명 변경
-        giftForPurchaseAmount();    // 구매금액에 따른 증정
-        allEventBenefit();          // 총혜택 내역
-        totalBenefit();             // 총혜택 금액
-        totalAmountAfterBenefit();  // 혜택 적용된 금액
-        badgeByBenefit();           // 혜택 금액에 따른 배지
+        startBooking();                 // 예약시작
+        totalPaymentBeforeBenefits();   // 혜택 적용전 금액
+        createEventBenefit();           // 인스턴스 생성
+        giftForPurchaseAmount();        // 구매금액에 따른 증정
+        allEventBenefit();              // 총혜택 내역
+        totalBenefit();                 // 총혜택 금액
+        totalPaymentAfterBenefit();      // 혜택 적용된 금액
+        badgeByBenefit();               // 혜택 금액에 따른 배지
     }
 
     private void startBooking() {
@@ -38,14 +38,14 @@ public class EventController {
         outputView.outputPreview(reservationInformation.getReservationDate());
     }
 
-    private void beforeBenefits() {
+    private void totalPaymentBeforeBenefits() {
         totalPaymentResult = new TotalPaymentResult(reservationInformation.getFoodAndAmount());
         outputView.outputMenu(reservationInformation.getFoodAndAmount());
         int totalPayment = totalPaymentResult.getTotalPayment();
         outputView.outputNotDiscountPayment(totalPayment);
     }
 
-    private void createInstance() {
+    private void createEventBenefit() {
         eventBenefit = new EventBenefit(reservationInformation.getReservationDate(),
                                         reservationInformation.getFoodAndAmount(),
                                         totalPaymentResult.getTotalPayment());
@@ -73,7 +73,7 @@ public class EventController {
         outputView.outputTotalBenefit(totalBenefit);
     }
 
-    private void totalAmountAfterBenefit() {
+    private void totalPaymentAfterBenefit() {
         int totalBenefit = eventBenefit.totalBenefit();
         int totalAmountBeforeBenefits = totalPaymentResult.getTotalPayment();
         int totalAmountAfterBenefits = totalPaymentResult.estimatePaymentAfterDiscount(totalAmountBeforeBenefits, totalBenefit);
