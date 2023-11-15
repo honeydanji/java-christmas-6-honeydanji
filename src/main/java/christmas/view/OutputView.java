@@ -1,6 +1,5 @@
 package christmas.view;
 
-import java.sql.SQLOutput;
 import java.util.HashMap;
 
 import static christmas.utils.OutputMessage.*;
@@ -65,13 +64,16 @@ public class OutputView {
     public void outputTotalBenefit(int totalBenefit) {
         if (totalBenefit == 0) {
             System.out.println(String.format(TOTAL_BENEFIT.getMessage(),"",totalBenefit));
+            System.out.println();
             return;
         }
         System.out.println(String.format(TOTAL_BENEFIT.getMessage(),"-",totalBenefit));
+        System.out.println();
     }
 
     public void outputDiscountPayment(int total) {
         System.out.println(String.format(DISCOUNT_PAYMENT.getMessage(),total));
+        System.out.println();
     }
 
     public void outputBadgeOfBenefit(String badge) {
