@@ -69,6 +69,10 @@ public class OutputView {
         System.out.println(String.format(TOTAL_BENEFIT.getMessage(),"-",totalBenefit));
     }
 
+    public void outputDiscountPayment(int total) {
+        System.out.println(String.format(DISCOUNT_PAYMENT.getMessage(),total));
+    }
+
     public void outputNotThing() {
         System.out.println(NOT_THING.getMessage());
     }

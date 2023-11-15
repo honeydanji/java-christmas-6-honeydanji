@@ -18,12 +18,13 @@ public class EventController {
     private EventBenefit eventBenefit;
 
     public EventController() {
-        startBooking();
-        beforeBenefits();
-        createInstance(); // 함수명 변경
-        giftForPurchaseAmount();
-        allEventBenefit();
-        totalBenefit();
+        startBooking();             // 예약시작
+        beforeBenefits();           // 혜택 적용전 금액
+        createInstance();           // 함수명 변경
+        giftForPurchaseAmount();    // 구매금액에 따른 증정
+        allEventBenefit();          // 총혜택 내역
+        totalBenefit();             // 총혜택 금액
+        totalAmountAfterBenefit();  // 혜택 적용된 금액
     }
 
     private void startBooking() {
@@ -65,12 +66,15 @@ public class EventController {
         outputView.outputGiveawayDiscount(eventBenefit.getAllBenefitDetail().get(4));
     }
     private void totalBenefit() {
-        int totalBenefit = 0;
-        for (int benefit : eventBenefit.getAllBenefitDetail()) {
-            totalBenefit += benefit;
-        }
+        int totalBenefit = eventBenefit.totalBenefit();
         outputView.outputTotalBenefit(totalBenefit);
     }
 
-    // 할인 후 예상 금액 = 총 주문금액 - 총 혜택 금액
+    private void totalAmountAfterBenefit() {
+        int totalBenefit = eventBenefit.totalBenefit();
+        int totalAmountBeforeBenefits = totalPaymentResult.getTotalPayment();
+        int totalAmountAfterBenefits = totalPaymentResult.estimatePaymentAfterDiscount(totalAmountBeforeBenefits, totalBenefit);
+        outputView.outputDiscountPayment(totalAmountAfterBenefits);
+    }
 }
+

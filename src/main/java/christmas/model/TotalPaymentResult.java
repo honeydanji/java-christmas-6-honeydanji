@@ -12,6 +12,16 @@ public class TotalPaymentResult {
         setTotalPayment(foodAndAmount);
     }
 
+    public int estimatePaymentAfterDiscount(int totalAmountBeforeBenefits, int totalBenefit) {
+        int totalAmountAfterBenefits = 0;
+        if(totalAmountBeforeBenefits >= 120000) {
+            totalAmountAfterBenefits = totalAmountBeforeBenefits - totalBenefit + 25000;
+            return totalAmountAfterBenefits;
+        }
+        totalAmountAfterBenefits = totalAmountBeforeBenefits - totalBenefit;
+        return totalAmountAfterBenefits;
+    }
+
     public int getTotalPayment() {
         return totalPayment;
     }
