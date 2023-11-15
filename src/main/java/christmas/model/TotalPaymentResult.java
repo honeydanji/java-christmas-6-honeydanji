@@ -3,6 +3,9 @@ package christmas.model;
 import java.util.HashMap;
 
 public class TotalPaymentResult {
+    private final int MIN_ORDER_AMOUNT_FOR_GIFT = 120000;
+    private final int CHAMPAGNE_PRICE = 25000;
+
     private int totalPayment;
 
     public TotalPaymentResult(HashMap<String, Integer> foodAndAmount) {
@@ -14,8 +17,8 @@ public class TotalPaymentResult {
 
     public int estimatePaymentAfterDiscount(int totalAmountBeforeBenefits, int totalBenefit) {
         int totalAmountAfterBenefits = 0;
-        if(totalAmountBeforeBenefits >= 120000) {
-            totalAmountAfterBenefits = totalAmountBeforeBenefits - totalBenefit + 25000;
+        if(totalAmountBeforeBenefits >= MIN_ORDER_AMOUNT_FOR_GIFT) {
+            totalAmountAfterBenefits = totalAmountBeforeBenefits - totalBenefit + CHAMPAGNE_PRICE;
             return totalAmountAfterBenefits;
         }
         totalAmountAfterBenefits = totalAmountBeforeBenefits - totalBenefit;
