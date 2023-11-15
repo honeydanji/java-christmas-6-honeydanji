@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 import static christmas.utils.ExceptionMessage.*;
 
 public class InputMenuException {
+    private final int MAX_SELECT_MENU = 20;
+    private final int MIN_SELECT_MENU = 1;
 
     public void preConversionException(String foodAndAmount) {
         mismatchedMenu(foodAndAmount);
@@ -67,7 +69,7 @@ public class InputMenuException {
         for(String food : foodAndAmount.keySet()) {
             total += foodAndAmount.get(food);
         }
-        if(total > 20 || total < 1) {
+        if(total > MAX_SELECT_MENU || total < MIN_SELECT_MENU) {
             throw new IllegalArgumentException(INVALID_MENU_COUNT);
         }
     }
