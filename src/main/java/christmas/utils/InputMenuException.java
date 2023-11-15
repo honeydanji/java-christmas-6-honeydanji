@@ -16,6 +16,7 @@ public class InputMenuException {
     }
 
     public void postConversionException(HashMap<String, Integer> foodAndAmount) {
+        notOnlyDrink(foodAndAmount);
         nonExistentMenu(foodAndAmount);
         invalidMenuCount(foodAndAmount);
     }
@@ -50,6 +51,17 @@ public class InputMenuException {
         }
     }
 
+    private void notOnlyDrink(HashMap<String, Integer> foodAndAmount) {
+        List<String> foodCheck = new ArrayList<>(notDrinkOnlyFoodDto());
+
+        for(String s : foodAndAmount.keySet()) {
+            if (foodCheck.contains(s)) {
+                return;
+            }
+        }
+        throw new IllegalArgumentException(NOT_ONLY_DRINK);
+    }
+
     private void invalidMenuCount(HashMap<String, Integer> foodAndAmount) {
         int total = 0;
         for(String food : foodAndAmount.keySet()) {
@@ -65,5 +77,11 @@ public class InputMenuException {
                         "티본스테이크", "바비큐립", "해산물파스타", "크리스마스파스타",
                         "초코케이크","아이스크림",
                         "제로콜라","레드와인","샴페인");
+    }
+
+    private List<String> notDrinkOnlyFoodDto() {
+        return List.of("양송이스프","타파스","시저샐러드",
+                "티본스테이크", "바비큐립", "해산물파스타", "크리스마스파스타",
+                "초코케이크","아이스크림");
     }
 }
