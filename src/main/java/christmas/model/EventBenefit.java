@@ -6,6 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class EventBenefit {
+    private final int MIN_ORDER_AMOUNT_FOR_EVENT = 10000;
+    private final int MIN_ORDER_AMOUNT_FOR_GIFT = 120000;
+    private final int CHAMPAGNE_PRICE = 25000;
+    private final int D_DAY_BASIC_DISCOUNT = 1000;
+    private final int D_DAY_ADDITIONAL_DISCOUNT = 100;
+    private final int SPECIAL_DISCOUNT = 1000;
+    private final int WEEKDAY_DISCOUNT = 2023;
+    private final int WEEKEND_DISCOUNT = 2023;
 
     private int reservationDate;
     private HashMap<String, Integer> foodAndAmount;
@@ -34,7 +42,7 @@ public class EventBenefit {
         allBenefitDetail.add(2,weekendDiscount());
         allBenefitDetail.add(3,specialDayDiscount());
         allBenefitDetail.add(4,gift());
-        if(totalPayment < 10000) {
+        if(totalPayment < MIN_ORDER_AMOUNT_FOR_EVENT) {
             allBenefitDetail = new ArrayList<>(Arrays.asList(0,0,0,0,0));
         }
         return allBenefitDetail;
@@ -43,7 +51,7 @@ public class EventBenefit {
     public int christmasDiscount() {
         int discount = 0;
         if (decemberEventData.christmasPeriod().contains(reservationDate)) {
-            discount = 1000 + 100 * (reservationDate - 1);
+            discount = D_DAY_BASIC_DISCOUNT + D_DAY_ADDITIONAL_DISCOUNT * (reservationDate - 1);
             return discount;
         }
         return discount;
@@ -57,7 +65,7 @@ public class EventBenefit {
                 desertCount += foodAndAmount.get(food);
             }
         }
-        discount = 2023 * desertCount;
+        discount = WEEKDAY_DISCOUNT * desertCount;
         return discount;
     }
 
@@ -69,20 +77,20 @@ public class EventBenefit {
                 mainDishCount += foodAndAmount.get(food);
             }
         }
-        discount = 2023 * mainDishCount;
+        discount = WEEKEND_DISCOUNT * mainDishCount;
         return discount;
     }
 
     public int specialDayDiscount() {
         if (decemberEventData.specialDay().contains(reservationDate)) {
-            return 1000;
+            return SPECIAL_DISCOUNT;
         }
         return 0;
     }
 
     public int gift() {
-        if (totalPayment >= 120000) {
-            return 25000;
+        if (totalPayment >= MIN_ORDER_AMOUNT_FOR_GIFT) {
+            return CHAMPAGNE_PRICE;
         }
         return 0;
     }
