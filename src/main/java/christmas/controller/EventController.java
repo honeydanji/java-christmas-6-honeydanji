@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.model.BadgeByBenefit;
 import christmas.model.EventBenefit;
 import christmas.model.ReservationInformation;
 import christmas.model.TotalPaymentResult;
@@ -16,6 +17,7 @@ public class EventController {
     private ReservationInformation reservationInformation;
     private TotalPaymentResult totalPaymentResult;
     private EventBenefit eventBenefit;
+    private BadgeByBenefit badgeByBenefit;
 
     public EventController() {
         startBooking();             // 예약시작
@@ -25,6 +27,7 @@ public class EventController {
         allEventBenefit();          // 총혜택 내역
         totalBenefit();             // 총혜택 금액
         totalAmountAfterBenefit();  // 혜택 적용된 금액
+        badgeByBenefit();           // 혜택 금액에 따른 배지
     }
 
     private void startBooking() {
@@ -75,6 +78,12 @@ public class EventController {
         int totalAmountBeforeBenefits = totalPaymentResult.getTotalPayment();
         int totalAmountAfterBenefits = totalPaymentResult.estimatePaymentAfterDiscount(totalAmountBeforeBenefits, totalBenefit);
         outputView.outputDiscountPayment(totalAmountAfterBenefits);
+    }
+
+    private void badgeByBenefit() {
+        badgeByBenefit = new BadgeByBenefit(eventBenefit.totalBenefit());
+        String badge = badgeByBenefit.badge();
+        outputView.outputBadgeOfBenefit(badge);
     }
 }
 
